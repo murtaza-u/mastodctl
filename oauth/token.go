@@ -11,6 +11,7 @@ type token struct {
 	Access string `json:"access_token"`
 }
 
+// Token exchanges the authorization code for the access token.
 func (o O) Token(code string) (string, error) {
 	uri := o.Server + TokenEnd
 

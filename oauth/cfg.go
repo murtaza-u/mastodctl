@@ -5,6 +5,8 @@ import (
 	"strings"
 )
 
+// Cfg carries all the configuration parameters required to
+// instantiate an OAuth instance.
 type Cfg struct {
 	ClientID     string
 	ClientSecret string
@@ -22,6 +24,7 @@ var (
 	ErrInvalidHttpURL      = errors.New("invalid http URL")
 )
 
+// validate validates the configuration against a set of rules.
 func (c *Cfg) validate() error {
 	if c.ClientID == "" {
 		return ErrMissingClientID

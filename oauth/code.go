@@ -5,6 +5,12 @@ import (
 	"strings"
 )
 
+// AuthCode performs a series of interactive action the get the
+// authorization code form the authorization server.
+//
+// It returns the authorization code (pasted by the user). In order to
+// complete the authorization flow, exchange the code for the access
+// token by calling the Token method.
 func (o O) AuthCode() string {
 	var code string
 

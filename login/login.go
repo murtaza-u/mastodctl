@@ -13,7 +13,7 @@ import (
 var Cmd = &Z.Cmd{
 	Name:     `login`,
 	Summary:  `login to Mastodon instance`,
-	Usage:    `<profile name>`,
+	Usage:    `profile-name`,
 	Commands: []*Z.Cmd{help.Cmd},
 	NumArgs:  1,
 	Call: func(caller *Z.Cmd, args ...string) error {
@@ -48,15 +48,9 @@ var Cmd = &Z.Cmd{
 			)
 		}
 
-		ctxs := cfg.GetContexts()
-		if ctxs == nil {
-			ctxs = make([]config.Ctx, 0)
-		}
-		ctxs = append(ctxs, config.Ctx{Name: name, AccessToken: tkn})
-		cfg.Contexts = ctxs
-
+		cfg.InsertContext(config.Ctx{Name: name, AccessToken: tkn})
 		if cfg.Current == "" {
-			cfg.Current = name
+			cfg.SetContext(name)
 		}
 
 		if err := cfg.Save(); err != nil {

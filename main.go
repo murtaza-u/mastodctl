@@ -1,6 +1,7 @@
 package mastodctl
 
 import (
+	"github.com/murtaza-u/mastodctl/account"
 	"github.com/murtaza-u/mastodctl/context"
 	"github.com/murtaza-u/mastodctl/login"
 
@@ -17,5 +18,7 @@ var Cmd = &Z.Cmd{
 	License:   `Apache 2.0`,
 	Source:    `https://github.com/murtaza-u/mastodctl`,
 	Issues:    `https://github.com/murtaza-u/mastodctl/issues`,
-	Commands:  []*Z.Cmd{help.Cmd, conf.Cmd, login.Cmd, context.Cmd},
+	Commands: []*Z.Cmd{
+		help.Cmd, conf.Cmd, login.Cmd, context.Cmd, account.Cmd,
+	},
 }
